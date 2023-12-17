@@ -33,6 +33,19 @@ public class Two_Sum{
 		}
 		return new int []{};
 	}
+	//Method 3: One Pass HashMap
+	public int [] twoSumHT1(int [] A, int target){
+		Map <Integer, Integer> map = new HashMap <>();
+		for(int i = 0; i < A.length; i++){
+			int comp = target - A[i];
+			if(map.containsKey(comp)){
+				System.out.println(i +" "+map.get(comp));
+				return new int [] {i, map.get(comp)};
+			}
+			map.put(A[i], i);
+		}
+		return new int [] {};
+	}
 	public static void main(String[]args){
 		int [] A = {2, 3, 55, 7};
 		int target = 9;
@@ -41,5 +54,7 @@ public class Two_Sum{
 		sum.twoSum(A, target);
 		//
 		sum.twoSumHT(A, target);
+		//One Pass
+		sum.twoSumHT1(A, target);
 	}
 }
